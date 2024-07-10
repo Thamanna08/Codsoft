@@ -1,0 +1,43 @@
+import java.util.Random;
+import java.util.*;
+public class NumberGame {
+    public static void main(String[] args) {
+        Random r= new Random();
+        int attempt = 0;
+        int score=0;
+        Scanner s = new Scanner(System.in);
+        System.out.println("**Welcome to Number Game**");
+        boolean Play_Again=true;
+        while(Play_Again)
+        {
+            int numbertoGuess = r.nextInt(100) + 1;
+            System.out.println("Guess a number between 1 and 100: ");
+            while(attempt<5)
+            {
+                System.out.print("Enter your guess(attempts"+(attempt+1)+"):");
+                int guess = s.nextInt();
+                attempt++;
+            if (guess == numbertoGuess) {
+                System.out.println("Congratulations! You guessed the correct number!");
+                score+=10-attempt+1;
+                break;
+                }
+            else if (guess <numbertoGuess) {
+                System.out.println("Too low! Try again.");
+            } else {
+                System.out.println("Too high! Try again.");
+            }
+        if (attempt==5&&guess!=numbertoGuess)
+        {
+            System.out.println("Sorry, you didn't find the  number.It was " + numbertoGuess + ".");
+        }}
+            System.out.println("Your score:"+score);
+            attempt=0;
+        System.out.println("Do you want to play again(yes/no):");
+        s.nextLine();
+        String response=s.nextLine().trim().toLowerCase();
+        Play_Again=response.equals("yes");
+        }
+    System.out.println("Thanks for playing!Your final score:"+score);
+}
+}
